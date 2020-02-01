@@ -1,0 +1,42 @@
+
+## Borra la carpeta si existe
+!hdfs dfs -rm -r -f /tmp/output
+
+##
+## Crea la carpeta drivers en el HDFS
+##
+!hdfs dfs -mkdir /tmp/output
+
+##
+## Copia los archivos al HDFS
+##
+!hdfs dfs -copyFromLocal data.tsv  /tmp/output/data.tsv
+
+## Carga de datos
+## Punto 1
+
+DROP TABLE IF EXISTS data;
+
+CREATE TABLE data (letra       STRING,
+                           fecha        STRING,
+                           numero      INT)
+
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY '\t';
+
+SHOW TABLES;
+SHOW CREATE TABLE data;
+
+DESCRIBE data;
+
+SELECT * FROM data LIMIT 5;
+
+select * FROM data
+group by letra
+order by junto;
+
+##
+## Lista los archivos al HDFS para verificar
+## que los archivos fueron copiados correctamente.
+##
+!hdfs dfs -ls /tmp/output/*

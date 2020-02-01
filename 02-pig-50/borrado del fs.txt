@@ -1,0 +1,6 @@
+## Se elimina el directorio de salida en el hdfs si existe
+!hadoop fs -rm input/*
+!hadoop fs -rm output/*
+!hadoop fs -rm output2/*
+!hadoop fs -rmdir input output
+!hadoop fs -rmdir input output2
